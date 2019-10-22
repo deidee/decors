@@ -12,12 +12,14 @@ class Decor
 
         $this->im = new Imagick();
         $this->im->newImage($this->width, $this->height, new ImagickPixel('#ffffff'));
-        $this->im->setImageFormat('png');
+        $this->im->setImageFormat('svg');
 
         $this->draw();
     }
 
     public function __toString() {
+        header('Content-Type: ' . $this->im->getImageMimeType());
+
         return $this->im->getImageBlob();
     }
 
@@ -47,6 +49,4 @@ class Decor
 }
 
 $im = new Decor;
-header('Content-type: image/png');
-//header('Content-Type: image/svg');
 echo $im;
