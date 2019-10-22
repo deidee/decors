@@ -2,8 +2,8 @@
 
 class Decor
 {
-    private $height = 310;
-    private $width = 310;
+    private $height = 300;
+    private $width = 300;
     private $size = 24;
 
     public function __construct() {
@@ -31,8 +31,12 @@ class Decor
                 $x2 = $x1 + $this->size - 1;
                 $y1 = $row * $this->size;
                 $y2 = $y1 + $this->size - 1;
+                $r = mt_rand(0, 255);
+                $g = mt_rand(0, 255);
+                $b = mt_rand(0, 255);
+                $color = "rgb($r, $g, $b)";
 
-                $draw->setFillColor(new ImagickPixel('#00ff00'));
+                $draw->setFillColor(new ImagickPixel($color));
                 $draw->setFillOpacity(.5);
                 $draw->rectangle($x1, $y1, $x2, $y2);
             }
