@@ -4,9 +4,8 @@ class Decor
 {
     public function __construct() {
         $this->im = new Imagick();
-        $this->im->setResolution(300, 300);
-        $this->im->setBackgroundColor(new ImagickPixel('transparent'));
-        $this->im->setImageFormat('png32');
+        $this->im->newImage(300, 300, new ImagickPixel('#ffffff'));
+        $this->im->setImageFormat('png');
     }
 
     public function __toString() {
