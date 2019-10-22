@@ -2,9 +2,16 @@
 
 class Decor
 {
+    private $height = 300;
+    private $width = 300;
+    private $size = 24;
+
     public function __construct() {
+        $this->cols = ceil($this->width / $this->size);
+        $this->rows = ceil($this->height / $this->size);
+
         $this->im = new Imagick();
-        $this->im->newImage(300, 300, new ImagickPixel('#ffffff'));
+        $this->im->newImage($this->width, $this->height, new ImagickPixel('#ffffff'));
         $this->im->setImageFormat('png');
 
         $this->draw();
