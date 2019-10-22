@@ -15,14 +15,15 @@ class Decor
     }
 
     public function draw() {
-        $this->draw = new ImagickDraw();
-        $this->draw->setFillColor('#00ff00');
-        $this->draw->rectangle(20, 20, 40, 40);
+        $draw = new ImagickDraw();
+        $draw->setFillColor('#00ff00');
+        $draw->rectangle(20, 20, 40, 40);
 
-        $this->im->drawImage($this->draw);
+        $this->im->drawImage($draw);
     }
 }
 
 $im = new Decor;
 header('Content-type: image/png');
+//header('Content-Type: image/svg');
 echo $im;
