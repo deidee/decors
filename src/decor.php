@@ -23,8 +23,18 @@ class Decor
 
     public function draw() {
         $draw = new ImagickDraw();
-        $draw->setFillColor('#00ff00');
-        $draw->rectangle(20, 20, 40, 40);
+
+        for($row = 0; $row < $this->rows; $row++) {
+            for($col = 0; $col < $this->cols; $col++) {
+                $x1 = $col * $this->size;
+                $x2 = $x1 + $this->size;
+                $y1 = $row * $this->size;
+                $y2 = $y1 + $this->size;
+
+                $draw->setFillColor(new ImagickPixel('#00ff00'));
+                $draw->rectangle($x1, $y1, $x2, $y2);
+            }
+        }
 
         $this->im->drawImage($draw);
     }
