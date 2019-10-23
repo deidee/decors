@@ -61,6 +61,3 @@ class Decor
         $this->im->drawImage($draw);
     }
 }
-
-$im = new Decor(['width' => 600]);
-echo $im;
