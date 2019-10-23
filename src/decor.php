@@ -12,7 +12,7 @@ class Decor
 
         $this->im = new Imagick();
         $this->im->newImage($this->width, $this->height, new ImagickPixel('#ffffff'));
-        $this->im->setImageFormat('svg');
+        $this->im->setImageFormat('png');
 
         $this->draw();
     }
@@ -21,6 +21,16 @@ class Decor
         header('Content-Type: ' . $this->im->getImageMimeType());
 
         return $this->im->getImageBlob();
+    }
+
+    public function deJade() {
+        $r = mt_rand(0, 127);
+        $g = mt_rand(127, 255);
+        $b = mt_rand(0, 191);
+
+        $color = "rgb($r, $g, $b)";
+
+        return $color;
     }
 
     public function draw() {
@@ -33,10 +43,7 @@ class Decor
                 $x2 = $x1 + $this->size - 1;
                 $y1 = $row * $this->size;
                 $y2 = $y1 + $this->size - 1;
-                $r = mt_rand(0, 255);
-                $g = mt_rand(0, 255);
-                $b = mt_rand(0, 255);
-                $color = "rgb($r, $g, $b)";
+                $color = $this->deJade();
 
                 $draw->setFillColor(new ImagickPixel($color));
                 $draw->setFillOpacity(.5);
