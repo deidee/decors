@@ -6,7 +6,14 @@ class Decor
     private $width = 300;
     private $size = 24;
 
-    public function __construct() {
+    public function __construct($settings = []) {
+
+        if(!empty($settings)):
+            foreach($settings as $key => $value):
+                $this->$key = $value;
+            endforeach;
+        endif;
+
         $this->cols = ceil($this->width / $this->size);
         $this->rows = ceil($this->height / $this->size);
 
@@ -55,5 +62,5 @@ class Decor
     }
 }
 
-$im = new Decor;
+$im = new Decor(['width' => 600]);
 echo $im;
