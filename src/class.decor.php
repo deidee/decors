@@ -5,6 +5,7 @@ class Decor
     private $height = 300;
     private $width = 300;
     private $size = 24;
+    private $type = 'png';
 
     public function __construct($settings = []) {
 
@@ -17,10 +18,14 @@ class Decor
         $this->cols = ceil($this->width / $this->size);
         $this->rows = ceil($this->height / $this->size);
         $this->blocks = $this->rows * $this->cols;
+        $this->palette = [];
+
+        // Fill the palette with colors.
+        $this->populate();
 
         $this->im = new Imagick();
         $this->im->newImage($this->width, $this->height, new ImagickPixel('#ffffff'));
-        $this->im->setImageFormat('png');
+        $this->im->setImageFormat($this->type);
 
         $this->draw();
     }
@@ -44,6 +49,7 @@ class Decor
     public function draw() {
         $draw = new ImagickDraw();
         $draw->setStrokeWidth(0);
+        $i = 0;
 
         for($row = 0; $row < $this->rows; $row++) {
             for($col = 0; $col < $this->cols; $col++) {
@@ -51,15 +57,23 @@ class Decor
                 $x2 = $x1 + $this->size + mt_rand(-1, 1);
                 $y1 = $row * $this->size;
                 $y2 = $y1 + $this->size + mt_rand(-1, 1);
-                $color = $this->deJade();
+                $color = $this->palette[$i];
 
                 $draw->setFillColor(new ImagickPixel($color));
                 $draw->setFillOpacity(.5);
                 $draw->rectangle($x1, $y1, $x2, $y2);
+
+                $i++;
             }
         }
 
         $this->im->drawImage($draw);
+    }
+
+    public function populate() {
+        for($i = 0; $i < $this->blocks; $i ++) {
+            $this->palette[] = $this->deJade();
+        }
     }
 
     public function save() {
