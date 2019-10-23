@@ -60,4 +60,12 @@ class Decor
 
         $this->im->drawImage($draw);
     }
+
+    public function save() {
+        $dir = '../dist/images/';
+        $filename = 'image-' . time() . '.' . $this->im->getImageFormat();
+        $target = $dir . $filename;
+
+        file_put_contents($target, $this->im->getImageBlob());
+    }
 }
