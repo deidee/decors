@@ -16,6 +16,7 @@ class Decor
 
         $this->cols = ceil($this->width / $this->size);
         $this->rows = ceil($this->height / $this->size);
+        $this->blocks = $this->rows * $this->cols;
 
         $this->im = new Imagick();
         $this->im->newImage($this->width, $this->height, new ImagickPixel('#ffffff'));
