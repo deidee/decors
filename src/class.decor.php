@@ -1,5 +1,7 @@
 <?php
 
+require_once 'function.dejade.php';
+
 class Decor
 {
     private $height = 300;
@@ -70,10 +72,18 @@ class Decor
         $this->im->drawImage($draw);
     }
 
+    public function getBlockCount() {
+        return $this->blocks;
+    }
+
     public function populate() {
         for($i = 0; $i < $this->blocks; $i ++) {
             $this->palette[] = $this->deJade();
         }
+
+        $this->palette[0] = 'rgb(255, 68, 136)';
+
+        shuffle($this->palette);
     }
 
     public function save() {
