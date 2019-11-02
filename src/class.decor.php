@@ -81,9 +81,12 @@ class Decor
             $this->palette[] = $this->deJade();
         }
 
-        $this->palette[0] = 'rgb(255, 68, 136)';
+        // Pink for October.
+        if(idate('m') === 10) {
+            $this->palette[0] = 'rgb(255, 68, 136)';
 
-        shuffle($this->palette);
+            shuffle($this->palette);
+        }
     }
 
     public function save() {
