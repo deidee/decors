@@ -1,3 +1,9 @@
+
 /.idea/
 /node_modules/
 /vendor/
+
+.env
+config.ini
+
+/dist/
