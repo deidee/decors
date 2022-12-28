@@ -1,0 +1,20 @@
+{
+    "name": "deidee/decors",
+    "description": "Decoratieve vormelementen van en voor deidee.",
+    "type": "project",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Deidee\\Decors\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ACJ",
+            "email": "gitlab@acjs.net"
+        }
+    ],
+    "require": {
+        "deidee/dedate": "^0.3.0"
+    }
+}
