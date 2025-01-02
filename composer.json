@@ -15,6 +15,7 @@
         }
     ],
     "require": {
-        "deidee/dedate": "*"
+        "deidee/dedate": "*",
+        "ext-imagick": "*"
     }
 }
