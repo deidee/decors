@@ -7,6 +7,8 @@ class Decor
     private $height = 300;
     private $width = 300;
     private $size = 24;
+    private $style = 'blocks';
+    private $styles = ['blocks', 'lines', 'blobs'];
     private $type = 'png';
 
     public function __construct($settings = []) {
@@ -25,9 +27,14 @@ class Decor
         // Fill the palette with colors.
         $this->populate();
 
-        $this->im = new Imagick();
-        $this->im->newImage($this->width, $this->height, new ImagickPixel('#ffffff'));
-        $this->im->setImageFormat($this->type);
+        try {
+            $this->im = new Imagick();
+            $this->im->newImage($this->width, $this->height, new ImagickPixel('#ffffff'));
+            $this->im->setImageFormat($this->type);
+        }
+        catch(Exception $e) {
+            die('Error when creating image: ' . $e->getMessage());
+        }
 
         $this->draw();
     }
@@ -43,9 +50,7 @@ class Decor
         $g = mt_rand(127, 255);
         $b = mt_rand(0, 191);
 
-        $color = "rgb($r, $g, $b)";
-
-        return $color;
+        return "rgb($r, $g, $b)";
     }
 
     public function draw() {
