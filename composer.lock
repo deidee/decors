@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bfdb9400cbcbb6a035ae266c3b0ff3fd",
+    "content-hash": "baeb38b57c90f058063ee3c04d562a45",
     "packages": [
         {
             "name": "deidee/dedate",
